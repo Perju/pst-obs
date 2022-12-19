@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { ObsRoutingModule } from './app-routing.module';
 import { ObsComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -10,7 +11,8 @@ import { ObsComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    ObsRoutingModule
+    ObsRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [],
