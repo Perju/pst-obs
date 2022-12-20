@@ -1,8 +1,39 @@
-<mat-grid-list cols="5" rowHeight="100px">
-    <mat-grid-tile
-    *ngFor="let tile of tiles"
-    [colspan]="tile.cols"
-    [rowspan]="tile.rows"
-    [style.background]="tile.color"
-    >{{tile.text}}</mat-grid-tile>
-</mat-grid-list>
+<mat-grid-tile-header>
+  <mat-toolbar color="primary"> Header </mat-toolbar>
+</mat-grid-tile-header>
+<mat-drawer-container>
+  <mat-drawer mode="side" opened class="left-sidebar">
+    <mat-list>
+      <mat-list-item>Obs</mat-list-item>
+      <mat-list-item>Login</mat-list-item>
+      <mat-list-item>Controlador</mat-list-item>
+      <mat-list-item>Información</mat-list-item>
+      <mat-list-item>Otras cosas</mat-list-item>
+    </mat-list>
+  </mat-drawer>
+  <mat-drawer mode="side" position="end" opened class="right-sidebar">
+    <mat-list>
+      <mat-list-item>Propiedades</mat-list-item>
+      <mat-list-item>Inventadas</mat-list-item>
+      <mat-list-item>Por</mat-list-item>
+      <mat-list-item>Rellenar</mat-list-item>
+      <mat-list-item>Esto</mat-list-item>
+    </mat-list>
+  </mat-drawer>
+  <mat-drawer-content>
+    <mat-grid-list cols="5" rowHeight="fit">
+      <mat-grid-tile colspan="5" rowspan="1">
+        <mat-list>
+          <mat-list-item>Escena-1</mat-list-item>
+          <mat-list-item>Escena-2</mat-list-item>
+          <mat-list-item>Escena-3</mat-list-item>
+          <mat-list-item>Escena-4</mat-list-item>
+          <mat-list-item>Escena-5</mat-list-item>
+        </mat-list>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-drawer-content>
+</mat-drawer-container>
+<mat-grid-tile-footer>
+  <mat-toolbar color="primary"> Footer </mat-toolbar>
+</mat-grid-tile-footer>

@@ -6,6 +6,9 @@ import { ObsComponent } from './app.component'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { OnboardingComponent } from './views/onboarding/onboarding.component'
 import { MatGridListModule } from '@angular/material/grid-list'
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,10 @@ import { MatGridListModule } from '@angular/material/grid-list'
     BrowserModule,
     ObsRoutingModule,
     BrowserAnimationsModule,
-    MatGridListModule
+    MatGridListModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [ObsComponent],

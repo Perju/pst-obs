@@ -14,10 +14,8 @@ export interface Tile {
 export class ObsComponent {
   title = 'pst-obs';
   tiles: Tile[] = [
-    {text: 'Header', cols: 5, rows: 1,color: 'lightblue'},
     {text: 'Left', cols: 1, rows: 1, color: 'lightgreen'},
     {text: 'Content', cols: 3, rows: 1,color: 'lightpink'},
     {text: 'Right', cols: 1, rows: 1,color: '#DDBDF1'},
-    {text: 'Footer', cols: 5, rows: 1,color: 'lightblue'},
   ]
 }
