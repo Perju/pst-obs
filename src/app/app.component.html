@@ -1,5 +1,8 @@
-<obs-header></obs-header>
-<obs-left-side-bar></obs-left-side-bar>
-<router-outlet></router-outlet>
-<obs-right-side-bar></obs-right-side-bar>
-<obs-footer></obs-footer>
+<mat-grid-list cols="5" rowHeight="100px">
+    <mat-grid-tile
+    *ngFor="let tile of tiles"
+    [colspan]="tile.cols"
+    [rowspan]="tile.rows"
+    [style.background]="tile.color"
+    >{{tile.text}}</mat-grid-tile>
+</mat-grid-list>
