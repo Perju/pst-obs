@@ -4,17 +4,14 @@ import { BrowserModule } from '@angular/platform-browser'
 import { ObsRoutingModule } from './app-routing.module'
 import { ObsComponent } from './app.component'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { OnboardingComponent } from './views/onboarding/onboarding.component'
+import { HelpComponent } from './views/help/help.component'
 import { MatGridListModule } from '@angular/material/grid-list'
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatListModule } from '@angular/material/list';
+import { MatToolbarModule } from '@angular/material/toolbar'
+import { MatSidenavModule } from '@angular/material/sidenav'
+import { MatListModule } from '@angular/material/list'
 
 @NgModule({
-  declarations: [
-    ObsComponent,
-    OnboardingComponent,
-  ],
+  declarations: [ObsComponent, HelpComponent],
   imports: [
     BrowserModule,
     ObsRoutingModule,
@@ -24,8 +21,19 @@ import { MatListModule } from '@angular/material/list';
     MatSidenavModule,
     MatListModule
   ],
-  providers: [],
+  providers: [
+    MatGridListModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule
+  ],
   bootstrap: [ObsComponent],
-  exports: [ObsComponent]
+  exports: [
+    ObsComponent,
+    MatGridListModule,
+    MatListModule,
+    MatSidenavModule,
+    MatToolbarModule
+  ]
 })
 export class ObsModule {}
