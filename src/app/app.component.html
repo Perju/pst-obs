@@ -3,12 +3,15 @@
 </mat-grid-tile-header>
 <mat-drawer-container>
   <mat-drawer mode="side" opened class="left-sidebar">
-    <mat-list>
-      <mat-list-item>Obs</mat-list-item>
-      <mat-list-item>Login</mat-list-item>
-      <mat-list-item>Controlador</mat-list-item>
-      <mat-list-item>Información</mat-list-item>
-      <mat-list-item>Otras cosas</mat-list-item>
+    <mat-list class="side-nav-menu">
+      <h1 mat-subheader>Obs</h1>
+      <mat-divider></mat-divider>
+      <div *ngFor="let link of obsLinks">
+        <mat-list-item>
+          <a [href]="link.href">{{link.label}}</a>
+        </mat-list-item>
+      <mat-divider></mat-divider>
+      </div>
     </mat-list>
   </mat-drawer>
   <mat-drawer mode="side" position="end" opened class="right-sidebar">
