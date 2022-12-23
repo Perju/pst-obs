@@ -12,9 +12,10 @@ import { MatToolbarModule } from '@angular/material/toolbar'
 import { MatSidenavModule } from '@angular/material/sidenav'
 import { MatListModule } from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
+import { LeftSideBarComponent } from './views/left-side-bar/left-side-bar.component';
 
 @NgModule({
-  declarations: [ObsComponent, HelpComponent, LoginComponent, ControllerComponent],
+  declarations: [ObsComponent, HelpComponent, LoginComponent, ControllerComponent, LeftSideBarComponent],
   imports: [
     BrowserModule,
     ObsRoutingModule,
