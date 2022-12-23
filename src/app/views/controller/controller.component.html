@@ -1,3 +1,12 @@
-<div>
-  holi
-</div>
+  <div *ngFor="let scene of scenes">
+    <mat-expansion-panel hideToggle="">
+      <mat-expansion-panel-header>
+        <mat-panel-title>{{scene.name}}</mat-panel-title>
+        <mat-panel-description>Descripcion de la escena</mat-panel-description>
+      </mat-expansion-panel-header>
+      <p>
+        Contenido de las escenas
+
+      </p>
+    </mat-expansion-panel>
+  </div>
