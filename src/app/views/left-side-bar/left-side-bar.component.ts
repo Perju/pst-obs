@@ -6,19 +6,20 @@ import { Router } from '@angular/router'
   templateUrl: './left-side-bar.component.html',
   styleUrls: ['./left-side-bar.component.sass']
 })
-export class LeftSideBarComponent {
-  public obsLinks: { label: string; href: string; class?: string }[]
-  constructor(private router: Router) {
-    this.obsLinks = [
-      { label: 'Conectar', href: '' },
-      { label: 'Controlador', href: 'controller' },
-      { label: 'Ayuda', href: 'help' }
-    ]
-  }
+export class ObsLeftSideBarComponent implements OnInit {
+  public obsLinks: { label: string; href: string; class?: string }[] = [
+    { label: 'Conectar', href: 'login' },
+    { label: 'Controlador', href: 'controller' },
+    { label: 'Ayuda', href: 'help' }
+  ]
+
+  constructor(public router: Router) {}
 
   ngOnInit() {
     this.markCurrentPosition()
+    console.log("created")
   }
+
   markCurrentPosition() {
     console.log(this.router.url)
     this.obsLinks = this.obsLinks.map((e) => {
@@ -27,6 +28,6 @@ export class LeftSideBarComponent {
     })
   }
   navigate(href: string) {
-    this.router.navigate([href]).then(()=>this.markCurrentPosition())
+    this.router.navigate([href]).then(() => this.markCurrentPosition())
   }
 }

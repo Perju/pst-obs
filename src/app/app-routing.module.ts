@@ -7,7 +7,7 @@ import { ControllerComponent } from './views/controller/controller.component'
 const routes: Routes = [
   { path: 'help', component: HelpComponent },
   { path: 'controller', component: ControllerComponent },
-  { path: '', component: LoginComponent }
+  { path: 'login', component: LoginComponent }
 ]
 
 @NgModule({

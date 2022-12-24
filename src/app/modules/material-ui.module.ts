@@ -19,14 +19,6 @@ import { MatExpansionModule } from '@angular/material/expansion'
     MatDividerModule,
     MatExpansionModule
   ],
-  providers: [
-    MatGridListModule,
-    MatToolbarModule,
-    MatSidenavModule,
-    MatListModule,
-    MatDividerModule,
-    MatExpansionModule
-  ],
   exports: [
     MatGridListModule,
     MatListModule,
@@ -34,6 +26,6 @@ import { MatExpansionModule } from '@angular/material/expansion'
     MatToolbarModule,
     MatDividerModule,
     MatExpansionModule
-  ]
+  ],
 })
 export class MaterialUiModule {}
