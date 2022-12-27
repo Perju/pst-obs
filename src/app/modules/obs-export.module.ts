@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core'
-import { CommonModule } from '@angular/common'
-
-import { ObsRoutingModule } from '../app-routing.module'
 import { HelpComponent } from '../views/help/help.component'
 import { LoginComponent } from '../views/login/login.component'
 import { ControllerComponent } from '../views/controller/controller.component'
 import { ObsLeftSideBarComponent } from '../views/left-side-bar/left-side-bar.component'
-import { MaterialUiModule } from './material-ui.module'
+import { ObsMaterialUiModule } from './material-ui.module'
+import { ObsRoutingModule } from './obs-routing.module'
+import { CommonModule } from '@angular/common'
 
 @NgModule({
   declarations: [
@@ -15,9 +14,8 @@ import { MaterialUiModule } from './material-ui.module'
     ControllerComponent,
     ObsLeftSideBarComponent
   ],
-  imports: [ObsRoutingModule, MaterialUiModule, CommonModule],
+  imports: [CommonModule, ObsMaterialUiModule, ObsRoutingModule],
   exports: [
-    ObsRoutingModule,
     ObsLeftSideBarComponent,
     HelpComponent,
     LoginComponent,

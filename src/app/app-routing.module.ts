@@ -1,17 +1,12 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
-import { HelpComponent } from './views/help/help.component'
-import { LoginComponent } from './views/login/login.component'
-import { ControllerComponent } from './views/controller/controller.component'
 
-const routes: Routes = [
-  { path: 'help', component: HelpComponent },
-  { path: 'controller', component: ControllerComponent },
-  { path: 'login', component: LoginComponent }
+export const obsRoutes: Routes = [
+  { path: '', pathMatch: 'full', redirectTo: "obs/login" },
 ]
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(obsRoutes)],
   exports: [RouterModule]
 })
-export class ObsRoutingModule {}
+export class AppRoutingModule {}

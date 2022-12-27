@@ -8,9 +8,9 @@ import { Router } from '@angular/router'
 })
 export class ObsLeftSideBarComponent implements OnInit {
   public obsLinks: { label: string; href: string; class?: string }[] = [
-    { label: 'Conectar', href: 'login' },
-    { label: 'Controlador', href: 'controller' },
-    { label: 'Ayuda', href: 'help' }
+    { label: 'Conectar', href: 'obs/login' },
+    { label: 'Controlador', href: 'obs/controller' },
+    { label: 'Ayuda', href: 'obs/help' }
   ]
 
   constructor(public router: Router) {}

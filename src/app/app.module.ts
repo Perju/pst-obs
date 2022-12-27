@@ -5,11 +5,20 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { ObsExportModule } from './modules/obs-export.module'
 
 import { ObsComponent } from './app.component'
-import { MaterialUiModule } from './modules/material-ui.module'
+import { ObsMaterialUiModule } from './modules/material-ui.module'
+import { ObsRoutingModule } from './modules/obs-routing.module'
+import { AppRoutingModule } from './app-routing.module'
 
 @NgModule({
   declarations: [ObsComponent],
-  imports: [BrowserModule, BrowserAnimationsModule, ObsExportModule, MaterialUiModule],
-  bootstrap: [ObsComponent],
+  imports: [
+    AppRoutingModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    ObsMaterialUiModule,
+    ObsExportModule,
+  ],
+  exports: [],
+  bootstrap: [ObsComponent]
 })
 export class ObsModule {}
