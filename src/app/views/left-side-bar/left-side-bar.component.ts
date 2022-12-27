@@ -8,26 +8,12 @@ import { Router } from '@angular/router'
 })
 export class ObsLeftSideBarComponent implements OnInit {
   public obsLinks: { label: string; href: string; class?: string }[] = [
-    { label: 'Conectar', href: 'obs/login' },
-    { label: 'Controlador', href: 'obs/controller' },
-    { label: 'Ayuda', href: 'obs/help' }
+    { label: 'Conectar', href: '/obs/login' },
+    { label: 'Controlador', href: '/obs/controller' },
+    { label: 'Ayuda', href: '/obs/help' }
   ]
 
   constructor(public router: Router) {}
 
-  ngOnInit() {
-    this.markCurrentPosition()
-    console.log("created")
-  }
-
-  markCurrentPosition() {
-    console.log(this.router.url)
-    this.obsLinks = this.obsLinks.map((e) => {
-      e.class = '/' + e.href === this.router.url ? 'current-position' : ''
-      return e
-    })
-  }
-  navigate(href: string) {
-    this.router.navigate([href]).then(() => this.markCurrentPosition())
-  }
+  ngOnInit() {}
 }

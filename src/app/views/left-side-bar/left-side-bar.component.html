@@ -4,7 +4,7 @@
   </mat-list-item>
   <mat-divider></mat-divider>
   <div *ngFor="let link of obsLinks">
-    <mat-list-item class="link" (click)="navigate(link.href)" [ngClass]="link.class">
+    <mat-list-item class="link" routerLink="{{link.href}}" routerLinkActive="current-position">
       {{ link.label }}
     </mat-list-item>
     <mat-divider></mat-divider>
