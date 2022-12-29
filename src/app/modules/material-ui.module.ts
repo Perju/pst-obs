@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common'
 
 import { MatButtonModule } from '@angular/material/button'
 import { MatCardModule } from '@angular/material/card'
+import { MatChipsModule } from '@angular/material/chips'
 import { MatCommonModule } from '@angular/material/core'
 import { MatDividerModule } from '@angular/material/divider'
 import { MatExpansionModule } from '@angular/material/expansion'
@@ -24,6 +25,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
     ReactiveFormsModule,
     MatButtonModule,
     MatCardModule,
+    MatChipsModule,
     MatCommonModule,
     MatDividerModule,
     MatExpansionModule,
@@ -39,6 +41,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
   exports: [
     MatButtonModule,
     MatCardModule,
+    MatChipsModule,
     MatCommonModule,
     MatDividerModule,
     MatExpansionModule,

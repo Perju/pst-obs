@@ -6,6 +6,7 @@ import { ObsLeftSideBarComponent } from '../views/left-side-bar/left-side-bar.co
 import { ObsMaterialUiModule } from './material-ui.module'
 import { ObsRoutingModule } from './obs-routing.module'
 import { CommonModule } from '@angular/common'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 @NgModule({
   declarations: [
@@ -14,7 +15,13 @@ import { CommonModule } from '@angular/common'
     ControllerComponent,
     ObsLeftSideBarComponent
   ],
-  imports: [CommonModule, ObsMaterialUiModule, ObsRoutingModule],
+  imports: [
+    CommonModule,
+    ObsMaterialUiModule,
+    ObsRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
+  ],
   exports: [
     ObsLeftSideBarComponent,
     HelpComponent,
