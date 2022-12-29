@@ -21,7 +21,6 @@ export class LoginComponent {
   constructor(private authService: ObsAuthService, private router: Router) {
     authService.isLoggedIn$.subscribe({
       next: (data) => {
-        console.log('isLoggedIn', data)
         this.test = data ? 'accent' : 'primary'
       }
     })
@@ -37,8 +36,5 @@ export class LoginComponent {
     }
     let password = this.formulario.get('password')?.value
     this.authService.login(obsUrl, password || '').subscribe()
-  }
-  testButton() {
-    console.log('el boton es solo para pruebas')
   }
 }
