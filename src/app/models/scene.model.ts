@@ -1,6 +1,7 @@
 import { Source } from './source.model'
 
 export interface Scene {
-  name: string
+  sceneName: string
+  sceneIndex: number
   sources?: Source[]
 }

@@ -4,6 +4,7 @@ import { Router } from '@angular/router'
 import { Location } from '@angular/common'
 
 import { Scene } from '../../models/scene.model'
+import { ObsApiService } from 'src/app/services/obs-api.service'
 
 @Component({
   selector: 'obs-controller',
@@ -12,15 +13,24 @@ import { Scene } from '../../models/scene.model'
 })
 export class ControllerComponent implements OnInit {
   public scenes: Scene[] = []
-  public scene: Scene = { name: 'Inicio' }
-  constructor(private obsAuth: ObsAuthService, private location: Location) {
+  public scene: Scene = { sceneName: 'Inicio', sceneIndex: 1 }
+  constructor(private obsApi: ObsApiService, private obsAuth: ObsAuthService, private location: Location) {
     this.scenes = [
-      { name: 'Inicio' },
-      { name: 'Jugando' },
-      { name: 'Charlando' }
+      { sceneName: 'Inicio', sceneIndex: 1 },
+      { sceneName: 'Jugando', sceneIndex: 2 },
+      { sceneName: 'Charlando', sceneIndex: 3 }
     ]
   }
   ngOnInit() {
+    // obtener lista de escenas
+    this.obsApi.getScenes().subscribe({
+      next:(data)=>{
+        console.log("GetScenes: ", data.scenes.scenes)
+        this.scenes = data.scenes;
+      },
+      error: ()=>{},
+      complete:()=>{}
+    })
     this.obsAuth.isLoggedIn$.subscribe({
       next: (data) => {
         if (data) console.log('Controller component: ', data)

@@ -14,7 +14,6 @@ export interface ObsUrl {
 })
 export class ObsApiService {
   private idParams = { rpcVersion: 1 }
-
   private obsWS: OBSWebSocket
   constructor() {
     this.obsWS = new OBSWebSocket()
@@ -28,7 +27,7 @@ export class ObsApiService {
       .then((data) => {
         let response = {
           data: data,
-          obsWS: this.obsWS 
+          obsWS: this.obsWS
         }
         action.next(response)
       })
@@ -53,5 +52,21 @@ export class ObsApiService {
   }
   private _chkString(val: string | null | undefined) {
     return val !== '' && val !== undefined && val !== null
+  }
+
+  public getScenes(): Observable<any> {
+    const action = new ReplaySubject(1)
+    this.obsWS
+      .call("GetSceneList")
+      .then((data) => {
+        action.next(data)
+      })
+      .catch((err) => {
+        action.error(err)
+      })
+      .finally(() => {
+        action.complete()
+      })
+    return action
   }
 }
