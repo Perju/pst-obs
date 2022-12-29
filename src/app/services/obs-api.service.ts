@@ -57,7 +57,22 @@ export class ObsApiService {
   public getScenes(): Observable<any> {
     const action = new ReplaySubject(1)
     this.obsWS
-      .call("GetSceneList")
+      .call('GetSceneList')
+      .then((data) => {
+        action.next(data)
+      })
+      .catch((err) => {
+        action.error(err)
+      })
+      .finally(() => {
+        action.complete()
+      })
+    return action
+  }
+  public getSources(sceneName: string): Observable<any> {
+    const action = new ReplaySubject(1)
+    this.obsWS
+      .call('GetSceneItemList', { sceneName: sceneName })
       .then((data) => {
         action.next(data)
       })

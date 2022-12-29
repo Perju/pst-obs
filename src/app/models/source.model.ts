@@ -1,7 +1,7 @@
 import { TransformData } from './transform-data.model'
 
 export interface Source {
-  visible: boolean
-  name: string
-  transform: TransformData
+  sceneItemEnables: boolean
+  sourceName: string
+  sceneItemTransform: TransformData
 }

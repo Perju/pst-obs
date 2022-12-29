@@ -13,24 +13,18 @@ import { ObsApiService } from 'src/app/services/obs-api.service'
 })
 export class ControllerComponent implements OnInit {
   public scenes: Scene[] = []
-  public scene: Scene = { sceneName: 'Inicio', sceneIndex: 1 }
-  constructor(private obsApi: ObsApiService, private obsAuth: ObsAuthService, private location: Location) {
+  constructor(
+    private obsApi: ObsApiService,
+    private obsAuth: ObsAuthService,
+    private location: Location
+  ) {
     this.scenes = [
-      { sceneName: 'Inicio', sceneIndex: 1 },
-      { sceneName: 'Jugando', sceneIndex: 2 },
-      { sceneName: 'Charlando', sceneIndex: 3 }
+      { sceneName: 'Inicio', sceneIndex: 0 },
+      { sceneName: 'Jugando', sceneIndex: 1 },
+      { sceneName: 'Charlando', sceneIndex: 2 }
     ]
   }
   ngOnInit() {
-    // obtener lista de escenas
-    this.obsApi.getScenes().subscribe({
-      next:(data)=>{
-        console.log("GetScenes: ", data.scenes.scenes)
-        this.scenes = data.scenes;
-      },
-      error: ()=>{},
-      complete:()=>{}
-    })
     this.obsAuth.isLoggedIn$.subscribe({
       next: (data) => {
         if (data) console.log('Controller component: ', data)
@@ -42,6 +36,38 @@ export class ControllerComponent implements OnInit {
       complete: () => {
         console.log('Completed')
       }
+    })
+
+    // obtener lista de escenas
+    this.obsApi.getScenes().subscribe({
+      next: (data) => {
+        console.log('GetScenes: ', data.scenes)
+        this.scenes = data.scenes
+      },
+      error: (error) => {
+        console.log(error)
+      },
+      complete: () => {
+        //obtener lista de fuentes de cada escena
+        this._getSources()
+      }
+    })
+  }
+
+  //obtener lista de fuentes de cada escena
+  private _getSources() {
+    this.scenes.forEach((scene) => {
+      console.log()
+      this.obsApi.getSources(scene.sceneName).subscribe({
+        next: (data) => {
+          scene.sceneItems = data.sceneItems
+          console.log("GetSources:", scene.sceneItems)
+        },
+        error: (error) => {
+          console.log(error)
+        },
+        complete: () => {}
+      })
     })
   }
 }
