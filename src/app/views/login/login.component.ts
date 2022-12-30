@@ -15,7 +15,8 @@ export class LoginComponent {
   public formulario = new FormGroup({
     host: new FormControl('127.0.0.1', Validators.required),
     port: new FormControl('4455', []),
-    password: new FormControl('password', [])
+    password: new FormControl('password', []),
+    protocol: new FormControl('ws', [])
   })
 
   constructor(private authService: ObsAuthService, private router: Router) {
@@ -30,7 +31,7 @@ export class LoginComponent {
       return
     }
     let obsUrl: ObsUrl = {
-      protocol: 'ws',
+      protocol: this.formulario.get('protocol')?.value || '',
       host: this.formulario.get('host')?.value || '',
       port: this.formulario.get('port')?.value || ''
     }
