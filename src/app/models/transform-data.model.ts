@@ -1,6 +1,13 @@
 export interface TransformData {
-  position: { x: number; y: number }
-  size: { w: number; h: number }
-  crop: { top: number; right: number; botton: number; left: number }
+  positionX: number
+  positionY: number
+  sourceWidth: number
+  sourceHeight: number
+  scaleX: number
+  scaleY: number
+  cropTop: number
+  cropTight: number
+  cropBottom: number
+  cropLeft: number
   rotation: number
 }
