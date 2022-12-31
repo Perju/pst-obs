@@ -1,11 +1,21 @@
-<ng-container *ngFor="let scene of scenes">
+<ng-container *ngFor="let scene of scenes.reverse()">
   <mat-expansion-panel hideToggle="">
     <mat-expansion-panel-header>
       <mat-panel-title>{{ scene.sceneName }}</mat-panel-title>
       <mat-panel-description>Escena</mat-panel-description>
     </mat-expansion-panel-header>
-    <div *ngFor="let item of scene.sceneItems">
-      {{ item.sourceName }}
+
+    <div *ngFor="let item of scene.sceneItems?.reverse()" class="source">
+      <div>
+        {{ item.sourceName }}
+      </div>
+      <div>
+        <mat-slide-toggle checked="{{ item.sceneItemEnabled }}"
+          >activo</mat-slide-toggle
+        >
+      </div>
     </div>
+
+    <div></div>
   </mat-expansion-panel>
 </ng-container>
