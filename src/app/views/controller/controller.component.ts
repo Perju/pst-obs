@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core'
 import { Scene } from '../../models/scene.model'
 
 import { ObsApiService } from 'src/app/services/obs-api.service'
+import { OBSRequest } from 'src/app/services/constants'
 
 @Component({
   selector: 'obs-controller',
@@ -44,7 +45,7 @@ export class ControllerComponent implements OnInit {
 
   public toggleSource($event: any, sceneName: string, sceneItemId: number) {
     console.log('toggleSource: ', $event.checked)
-    this.obsApi.sendCommand('SetSceneItemEnabled', {
+    this.obsApi.sendCommand(OBSRequest.SetSceneItemEnabled, {
       sceneName: sceneName,
       sceneItemId: sceneItemId,
       sceneItemEnabled: $event.checked
