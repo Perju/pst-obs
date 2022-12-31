@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core'
 
 import OBSWebSocket from 'obs-websocket-js'
 import { Observable, ReplaySubject } from 'rxjs'
+import { OBSEvents, OBSRequest } from './constants'
 
 export interface ObsUrl {
   protocol?: string
@@ -56,15 +57,17 @@ export class ObsApiService {
   }
 
   public getScenes(): Observable<any> {
-    return this.sendCommand('GetSceneList')
+    return this.sendCommand(OBSRequest.GetSceneList)
   }
 
   public getSources(sceneName: string): Observable<any> {
-    return this.sendCommand('GetSceneItemList', { sceneName: sceneName })
+    return this.sendCommand(OBSRequest.GetSceneItemList, {
+      sceneName: sceneName
+    })
   }
   public onConnectionClosed(): Observable<any> {
     const action = new ReplaySubject(1)
-    this.obsWS.on('ConnectionClosed', () => {
+    this.obsWS.on(OBSEvents.ConnectionClosed, () => {
       action.next('saliendo')
       action.complete()
     })

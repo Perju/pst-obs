@@ -44,7 +44,6 @@ export class ControllerComponent implements OnInit {
   }
 
   public toggleSource($event: any, sceneName: string, sceneItemId: number) {
-    console.log('toggleSource: ', $event.checked)
     this.obsApi.sendCommand(OBSRequest.SetSceneItemEnabled, {
       sceneName: sceneName,
       sceneItemId: sceneItemId,
