@@ -10,7 +10,9 @@
         {{ item.sourceName }}
       </div>
       <div>
-        <mat-slide-toggle checked="{{ item.sceneItemEnabled }}"
+        <mat-slide-toggle
+          (change)="toggleSource($event, scene.sceneName, item.sceneItemId)"
+          checked="{{ item.sceneItemEnabled }}"
           >activo</mat-slide-toggle
         >
       </div>

@@ -30,8 +30,7 @@ export class ControllerComponent implements OnInit {
           this._getSources(scene)
         })
       }
-    });
-    (valor: any)=>{return valor}
+    })
   }
 
   //obtener lista de fuentes de cada escena
@@ -40,6 +39,15 @@ export class ControllerComponent implements OnInit {
       next: (data) => (scene.sceneItems = data.sceneItems),
       error: (error) => console.log(error),
       complete: () => {}
+    })
+  }
+
+  public toggleSource($event: any, sceneName: string, sceneItemId: number) {
+    console.log('toggleSource: ', $event.checked)
+    this.obsApi.sendCommand('SetSceneItemEnabled', {
+      sceneName: sceneName,
+      sceneItemId: sceneItemId,
+      sceneItemEnabled: $event.checked
     })
   }
 }
