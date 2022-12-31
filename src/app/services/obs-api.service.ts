@@ -30,7 +30,7 @@ export class ObsApiService {
     return action
   }
 
-  public sendCommand(command: any, params: any): Observable<any> {
+  public sendCommand(command: any, params?: any): Observable<any> {
     const action = new ReplaySubject(1)
 
     this.obsWS
@@ -56,41 +56,18 @@ export class ObsApiService {
   }
 
   public getScenes(): Observable<any> {
-    const action = new ReplaySubject(1)
-    this.obsWS
-      .call('GetSceneList')
-      .then((data) => {
-        action.next(data)
-      })
-      .catch((err) => {
-        action.error(err)
-      })
-      .finally(() => {
-        action.complete()
-      })
-    return action
+    return this.sendCommand('GetSceneList')
   }
+
   public getSources(sceneName: string): Observable<any> {
-    const action = new ReplaySubject(1)
-    this.obsWS
-      .call('GetSceneItemList', { sceneName: sceneName })
-      .then((data) => {
-        action.next(data)
-      })
-      .catch((err) => {
-        action.error(err)
-      })
-      .finally(() => {
-        action.complete()
-      })
-    return action
+    return this.sendCommand('GetSceneItemList', { sceneName: sceneName })
   }
   public onConnectionClosed(): Observable<any> {
     const action = new ReplaySubject(1)
-    this.obsWS.on('ConnectionClosed', ()=>{
-      action.next("saliendo")
+    this.obsWS.on('ConnectionClosed', () => {
+      action.next('saliendo')
       action.complete()
-    });
-    return action;
+    })
+    return action
   }
 }
