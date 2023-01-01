@@ -12,7 +12,7 @@ import { OBSRequest } from 'src/app/services/constants'
 })
 export class ControllerComponent implements OnInit {
   public scenes: Scene[] = []
-  public currentScene: Scene = { sceneName: 'Inicio', sceneIndex: 0 }
+  public currentScene: Scene = { sceneName: 'Inicio' }
   constructor(private obsApi: ObsApiService) {
     this.scenes = [
       { sceneName: 'Inicio', sceneIndex: 0 },
@@ -24,7 +24,11 @@ export class ControllerComponent implements OnInit {
   ngOnInit() {
     // obtener lista de escenas
     this.obsApi.getScenes().subscribe({
-      next: (data) => (this.scenes = data.scenes),
+      next: (data) => {
+        console.log(data)
+        this.currentScene.sceneName = data.currentProgramSceneName
+        this.scenes = data.scenes
+      },
       error: (error) => console.log(error),
       complete: () => {
         this.scenes.forEach((scene) => {
@@ -49,5 +53,23 @@ export class ControllerComponent implements OnInit {
       sceneItemId: sceneItemId,
       sceneItemEnabled: $event.checked
     })
+  }
+  public getIsActive(sceneName: string) {
+    return this.currentScene.sceneName === sceneName
+  }
+  public getActiveColor(sceneName: string) {
+    return this.currentScene.sceneName === sceneName ? 'accent': 'primary'
+  }
+
+  public setCurrentScene($event: any, sceneName: string) {
+    $event.stopPropagation()
+    this.obsApi
+      .sendCommand(OBSRequest.SetCurrentProgramScene, {
+        sceneName: sceneName
+      })
+      .subscribe({
+        next: () => (this.currentScene.sceneName = sceneName)
+      })
+    console.log('setCurrentScene')
   }
 }

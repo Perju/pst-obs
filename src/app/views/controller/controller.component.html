@@ -2,7 +2,12 @@
   <mat-expansion-panel hideToggle="">
     <mat-expansion-panel-header>
       <mat-panel-title>{{ scene.sceneName }}</mat-panel-title>
-      <mat-panel-description>Escena</mat-panel-description>
+      <mat-panel-description>Escena
+        <button mat-raised-button [color]="getActiveColor(scene.sceneName)" (click)="setCurrentScene($event, scene.sceneName)">
+          <ng-container *ngIf="getIsActive(scene.sceneName)==true">Active</ng-container>
+          <ng-container *ngIf="getIsActive(scene.sceneName)==false">Inactive</ng-container>
+        </button></mat-panel-description
+      >
     </mat-expansion-panel-header>
 
     <div *ngFor="let item of scene.sceneItems?.reverse()" class="source">
