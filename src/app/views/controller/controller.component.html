@@ -1,4 +1,4 @@
-<ng-container *ngFor="let scene of scenes.reverse()">
+<ng-container *ngFor="let scene of scenes">
   <mat-expansion-panel hideToggle="">
     <mat-expansion-panel-header>
       <mat-panel-title>{{ scene.sceneName }}</mat-panel-title>
@@ -10,7 +10,7 @@
       >
     </mat-expansion-panel-header>
 
-    <div *ngFor="let item of scene.sceneItems?.reverse()" class="source">
+    <div *ngFor="let item of scene.sceneItems" class="source">
       <div>
         {{ item.sourceName }}
       </div>

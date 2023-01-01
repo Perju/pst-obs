@@ -27,7 +27,7 @@ export class ControllerComponent implements OnInit {
       next: (data) => {
         console.log(data)
         this.currentScene.sceneName = data.currentProgramSceneName
-        this.scenes = data.scenes
+        this.scenes = data.scenes.reverse()
       },
       error: (error) => console.log(error),
       complete: () => {
@@ -41,7 +41,7 @@ export class ControllerComponent implements OnInit {
   //obtener lista de fuentes de cada escena
   private _getSources(scene: Scene) {
     this.obsApi.getSources(scene.sceneName).subscribe({
-      next: (data) => (scene.sceneItems = data.sceneItems),
+      next: (data) => (scene.sceneItems = data.sceneItems.reverse()),
       error: (error) => console.log(error),
       complete: () => {}
     })
