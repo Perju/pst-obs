@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core'
 
 import { Scene } from '../../models/scene.model'
 
-import { ObsApiService } from 'src/app/services/obs-api.service'
-import { OBSRequest } from 'src/app/services/constants'
+import { ObsApiService } from '../../services/obs-api.service'
+import { OBSRequest } from '../../services/constants'
 
 @Component({
   selector: 'obs-controller',
