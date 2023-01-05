@@ -6,7 +6,6 @@ import { ObsExportModule } from './modules/obs-export.module'
 
 import { ObsComponent } from './app.component'
 import { ObsMaterialUiModule } from './modules/material-ui.module'
-import { ObsRoutingModule } from './modules/obs-routing.module'
 import { AppRoutingModule } from './app-routing.module'
 
 @NgModule({
@@ -16,7 +15,7 @@ import { AppRoutingModule } from './app-routing.module'
     BrowserModule,
     BrowserAnimationsModule,
     ObsMaterialUiModule,
-    ObsExportModule,
+    ObsExportModule
   ],
   exports: [],
   bootstrap: [ObsComponent]

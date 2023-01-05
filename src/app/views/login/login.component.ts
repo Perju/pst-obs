@@ -1,16 +1,16 @@
-import { Component } from '@angular/core'
+import { Component, OnInit } from '@angular/core'
 import { FormControl, FormGroup, Validators } from '@angular/forms'
-import { Router } from '@angular/router'
-import { ObsUrl } from 'src/app/services/obs-api.service'
-import { ObsAuthService } from 'src/app/services/obs-auth.service'
+import { ObsUrl } from '../../services/obs-api.service'
+import { ObsAuthService } from '../../services/obs-auth.service'
 
 @Component({
   selector: 'obs-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.sass']
+  styleUrls: ['./login.component.sass'],
+  providers: [ObsAuthService]
 })
-export class LoginComponent {
-  test = 'primary'
+export class LoginComponent implements OnInit {
+  public connectedColor = 'primary'
 
   public formulario = new FormGroup({
     host: new FormControl('127.0.0.1', Validators.required),
@@ -19,13 +19,16 @@ export class LoginComponent {
     protocol: new FormControl('ws', [])
   })
 
-  constructor(private authService: ObsAuthService, private router: Router) {
-    authService.isLoggedIn$.subscribe({
-      next: (data) => {
-        this.test = data ? 'accent' : 'primary'
+  constructor(private authService: ObsAuthService) {}
+
+  ngOnInit() {
+    this.authService.isLoggedIn$.subscribe({
+      next: (data: any) => {
+        this.connectedColor = data ? 'accent' : 'primary'
       }
     })
   }
+
   submitForm() {
     if (this.formulario.invalid) {
       return

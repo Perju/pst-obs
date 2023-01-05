@@ -13,7 +13,7 @@ export class ObsLeftSideBarComponent implements OnInit {
     { label: 'Ayuda', href: '/obs/help' }
   ]
 
-  constructor(public router: Router) {}
+  constructor() {}
 
   ngOnInit() {}
 }

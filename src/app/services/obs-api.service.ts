@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core'
-
 import OBSWebSocket from 'obs-websocket-js'
 import { Observable, ReplaySubject } from 'rxjs'
 import { OBSEvents, OBSRequest } from './constants'
@@ -10,9 +9,7 @@ export interface ObsUrl {
   port?: string
 }
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ObsApiService {
   private idParams = { rpcVersion: 1 }
   private obsWS: OBSWebSocket
@@ -25,8 +22,8 @@ export class ObsApiService {
     let url = this._genUrl(obsUrl)
     this.obsWS
       .connect(url, password, this.idParams)
-      .then((data) => action.next(data))
-      .catch((err) => action.error(err))
+      .then((data: any) => action.next(data))
+      .catch((err: any) => action.error(err))
       .finally(() => action.complete())
     return action
   }
@@ -36,8 +33,8 @@ export class ObsApiService {
 
     this.obsWS
       .call(command, params || {})
-      .then((data) => action.next(data))
-      .catch((error) => action.error(error))
+      .then((data: any) => action.next(data))
+      .catch((error: any) => action.error(error))
       .finally(() => action.complete())
 
     return action

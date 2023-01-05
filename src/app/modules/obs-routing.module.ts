@@ -10,7 +10,11 @@ export const obsRoutes: Routes = [
     path: 'obs',
     children: [
       { path: 'help', component: HelpComponent },
-      { path: 'controller', component: ControllerComponent, canActivate: [LoggedInGuardService] },
+      {
+        path: 'controller',
+        component: ControllerComponent,
+        canActivate: [LoggedInGuardService]
+      },
       { path: 'login', component: LoginComponent }
     ]
   }
@@ -18,7 +22,7 @@ export const obsRoutes: Routes = [
 
 const routes: Routes = [...obsRoutes]
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
 export class ObsRoutingModule {}

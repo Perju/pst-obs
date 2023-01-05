@@ -3,9 +3,7 @@ import { Router } from '@angular/router'
 import { BehaviorSubject, tap } from 'rxjs'
 import { ObsApiService, ObsUrl } from './obs-api.service'
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ObsAuthService {
   private _isLoggedIn$ = new BehaviorSubject<boolean>(false)
   isLoggedIn$ = this._isLoggedIn$.asObservable()

@@ -7,6 +7,9 @@ import { ObsMaterialUiModule } from './material-ui.module'
 import { ObsRoutingModule } from './obs-routing.module'
 import { CommonModule } from '@angular/common'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { ObsApiService } from '../services/obs-api.service'
+import { ObsAuthService } from '../services/obs-auth.service'
+import { LoggedInGuardService } from '../services/logged-in-guard.service'
 
 @NgModule({
   declarations: [
@@ -27,6 +30,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
     HelpComponent,
     LoginComponent,
     ControllerComponent
+  ],
+  providers:[
+    ObsApiService,
+    ObsAuthService,
+    LoggedInGuardService
   ],
   schemas: []
 })
