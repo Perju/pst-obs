@@ -7,7 +7,6 @@ import { ObsAuthService } from '../../services/obs-auth.service'
   selector: 'obs-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.sass'],
-  providers: [ObsAuthService]
 })
 export class LoginComponent implements OnInit {
   public connectedColor = 'primary'

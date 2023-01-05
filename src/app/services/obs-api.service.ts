@@ -9,7 +9,7 @@ export interface ObsUrl {
   port?: string
 }
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class ObsApiService {
   private idParams = { rpcVersion: 1 }
   private obsWS: OBSWebSocket

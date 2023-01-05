@@ -3,12 +3,14 @@ import { Router } from '@angular/router'
 import { BehaviorSubject, tap } from 'rxjs'
 import { ObsApiService, ObsUrl } from './obs-api.service'
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class ObsAuthService {
-  private _isLoggedIn$ = new BehaviorSubject<boolean>(false)
+  _isLoggedIn$ = new BehaviorSubject<boolean>(false)
   isLoggedIn$ = this._isLoggedIn$.asObservable()
 
-  constructor(private obsApi: ObsApiService, private router: Router) {}
+  constructor(private obsApi: ObsApiService, private router: Router) {
+    console.log("obsAuthService constructor")
+  }
 
   public login(obsUrl: ObsUrl, password: string) {
     return this.obsApi.login(obsUrl, password).pipe(
@@ -29,10 +31,11 @@ export class ObsAuthService {
               )
               this.router.navigateByUrl('/obs/login')
             }
-            return this._isLoggedIn$.next(false)
+            this._isLoggedIn$.next(false)
           }
         })
         localStorage.setItem('obsAuth', response)
+        console.log("Logged In")
         this._isLoggedIn$.next(true)
       })
     )
