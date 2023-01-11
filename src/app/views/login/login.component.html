@@ -5,16 +5,16 @@
     </mat-card-header>
     <mat-card-content>
       <div class=".two-columns">
-        <mat-form-field class="example-form-field">
-          <mat-label>Protocolo</mat-label>
-          <input
-            matInput
-            type="text"
-            name="protocol"
-            placeholder="ws"
-            formControlName="protocol"
-        /></mat-form-field>
-        <mat-form-field class="example-form-field">
+        <!-- <mat-form-field class="example-form-field">
+                  <mat-label>Protocolo</mat-label>
+                  <input
+                    matInput
+                    type="text"
+                    name="protocol"
+                    placeholder="ws"
+                    formControlName="protocol"
+                /></mat-form-field> -->
+        <mat-form-field id="input-host" class="example-form-field">
           <mat-label>Host</mat-label>
           <input
             matInput
@@ -23,7 +23,7 @@
             placeholder="ws://192.168.1.x"
             formControlName="host"
         /></mat-form-field>
-        <mat-form-field class="example-form-field">
+        <mat-form-field id="input-port" class="example-form-field">
           <mat-label>Puerto</mat-label>
           <input
             matInput
@@ -42,7 +42,7 @@
           id="password"
           formControlName="password"
       /></mat-form-field>
-      <div>
+      <div class="row">
         <button
           mat-raised-button
           color="accent"
@@ -51,9 +51,13 @@
         >
           Conectar
         </button>
-        <mat-chip-listbox>
-          <mat-chip-option [color]="connectedColor" selected> Conected </mat-chip-option>
-        </mat-chip-listbox>
+        <div class="cell">
+          <mat-chip-listbox>
+            <mat-chip-option [color]="connectedColor" selected>
+              Conected
+            </mat-chip-option>
+          </mat-chip-listbox>
+        </div>
       </div>
     </mat-card-content>
     <mat-card-footer> </mat-card-footer>

@@ -1,11 +1,19 @@
 <mat-grid-tile-header>
-  <mat-toolbar color="primary"> Header </mat-toolbar>
+  <mat-toolbar color="primary"> OBS Controller </mat-toolbar>
 </mat-grid-tile-header>
 <mat-drawer-container>
   <mat-drawer mode="side" opened class="left-sidebar">
     <obs-left-side-bar></obs-left-side-bar>
   </mat-drawer>
-  <mat-drawer mode="side" position="end" opened class="right-sidebar">
+  <mat-drawer #drawer mode="side" position="end" [opened]="isOpened" class="right-sidebar">
+    <button
+      mat-raised-button
+      color="accent"
+      type="button"
+      (click)="cerrarPropiedades()"
+    >
+      Cerrar
+    </button>
     <mat-list>
       <mat-list-item>Propiedades</mat-list-item>
       <mat-list-item>Inventadas</mat-list-item>
@@ -20,5 +28,5 @@
   </mat-drawer-content>
 </mat-drawer-container>
 <mat-grid-tile-footer>
-  <mat-toolbar color="primary"> Footer </mat-toolbar>
+  <mat-toolbar color="primary"> <h5>©Perju</h5> </mat-toolbar>
 </mat-grid-tile-footer>
