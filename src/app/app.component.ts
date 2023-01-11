@@ -1,15 +1,24 @@
-import { Component } from '@angular/core'
+import { Component, OnInit } from '@angular/core';
+import { CommonService } from './services/common.service';
 
 @Component({
   selector: 'obs-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.sass']
+  styleUrls: ['./app.component.sass'],
 })
-export class ObsComponent {
-  isOpened = true;
-  cerrarPropiedades(){
-    console.log("llego al boton")
-    // drawer.close()
-    this.isOpened = false;
+export class ObsComponent implements OnInit{
+  public isOpened = true;
+  constructor(private commonService: CommonService) {}
+
+  ngOnInit(): void {
+    this.commonService.isPropVisible().subscribe({
+      next: (data)=>{
+        this.isOpened=data;
+      }
+    })
+  }
+
+  public closeProperties() {
+    this.commonService.setIsPropVisible(false);
   }
 }
