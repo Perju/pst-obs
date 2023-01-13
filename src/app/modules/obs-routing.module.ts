@@ -5,7 +5,7 @@ import { LoginComponent } from '../views/login/login.component'
 import { ControllerComponent } from '../views/controller/controller.component'
 import { LoggedInGuardService } from '../services/logged-in-guard.service'
 
-export const obsRoutes: Routes = [
+const obsRoutes: Routes = [
   {
     path: 'obs',
     children: [

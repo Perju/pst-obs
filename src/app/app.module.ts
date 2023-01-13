@@ -14,7 +14,6 @@ import { AppRoutingModule } from './app-routing.module'
     AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
-    ObsMaterialUiModule,
     ObsExportModule
   ],
   exports: [],
