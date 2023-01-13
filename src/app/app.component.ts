@@ -7,7 +7,7 @@ import { CommonService } from './services/common.service';
   styleUrls: ['./app.component.sass'],
 })
 export class ObsComponent implements OnInit{
-  public isOpened = true;
+  public isOpened = false;
   constructor(private commonService: CommonService) {}
 
   ngOnInit(): void {
