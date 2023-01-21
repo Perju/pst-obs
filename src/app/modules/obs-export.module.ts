@@ -3,6 +3,7 @@ import { HelpComponent } from '../views/help/help.component'
 import { LoginComponent } from '../views/login/login.component'
 import { ControllerComponent } from '../views/controller/controller.component'
 import { ObsLeftSideBarComponent } from '../views/left-side-bar/left-side-bar.component'
+import { ObsRightSideBarComponent } from '../views/right-side-bar/right-side-bar.component'
 import { ObsMaterialUiModule } from './material-ui.module'
 import { ObsRoutingModule } from './obs-routing.module'
 import { CommonModule } from '@angular/common'
@@ -13,7 +14,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
     HelpComponent,
     LoginComponent,
     ControllerComponent,
-    ObsLeftSideBarComponent
+    ObsLeftSideBarComponent,
+    ObsRightSideBarComponent
   ],
   imports: [
     CommonModule,
@@ -23,10 +25,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
     ReactiveFormsModule
   ],
   exports: [
-    ObsLeftSideBarComponent,
     HelpComponent,
     LoginComponent,
-    ControllerComponent
+    ControllerComponent,
+    ObsLeftSideBarComponent,
+    ObsRightSideBarComponent
   ],
   schemas: []
 })

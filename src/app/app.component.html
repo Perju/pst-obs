@@ -6,21 +6,13 @@
     <obs-left-side-bar></obs-left-side-bar>
   </mat-drawer>
   <mat-drawer #drawer mode="side" position="end" [opened]="isOpened" class="right-sidebar">
-    <button
-      mat-raised-button
-      color="accent"
-      type="button"
-      (click)="closeProperties()"
-    >
-      Cerrar
-    </button>
-    <mat-list>
-      <mat-list-item>Propiedades</mat-list-item>
-      <mat-list-item>Inventadas</mat-list-item>
-      <mat-list-item>Por</mat-list-item>
-      <mat-list-item>Rellenar</mat-list-item>
-      <mat-list-item>Esto</mat-list-item>
-    </mat-list>
+    <div class="float-center">
+        <button mat-raised-button color="accent" type="button" (click)="closeProperties()">
+            Cerrar
+        </button>
+    </div>
+    <mat-divider></mat-divider>
+    <obs-right-side-bar></obs-right-side-bar>
   </mat-drawer>
   <mat-drawer-content class="main-content">
     <!-- TODO añadir scroll con https://material.angular.io/cdk/scrolling/api -->
