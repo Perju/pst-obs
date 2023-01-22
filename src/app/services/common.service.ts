@@ -1,16 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable({providedIn: 'root'})
 export class CommonService {
-  private isPropVisible$: Subject<boolean> = new Subject<boolean>();
-  private rightSidebarData$: Subject<unknown> = new Subject<unknown>();
 
-  constructor() {}
+  private isPropVisible$: Subject<any> = new Subject<any>();
+  private rightSidebarData$: Subject<unknown> = new Subject<unknown>;
 
-  getRightSidebarData(): Observable<unknown> {
+  getRightSidebarData(): Observable<any> {
     return this.rightSidebarData$.asObservable();
   }
   isPropVisible(): Observable<boolean> {

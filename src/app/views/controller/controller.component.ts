@@ -5,8 +5,8 @@ import { Scene } from '../../models/scene.model';
 import { ObsApiService } from '../../services/obs-api.service';
 import { OBSRequestTypes } from 'obs-websocket-js';
 import { OBSRequest } from '../../services/constants';
-import { CommonService } from 'src/app/services/common.service';
 import { Source } from 'src/app/models/source.model';
+import { CommonService } from '../../services/common.service';
 
 @Component({
   selector: 'obs-controller',

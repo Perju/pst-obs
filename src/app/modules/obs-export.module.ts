@@ -25,6 +25,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
     ReactiveFormsModule
   ],
   exports: [
+    ObsLeftSideBarComponent,
+    ObsMaterialUiModule,
     HelpComponent,
     LoginComponent,
     ControllerComponent,
