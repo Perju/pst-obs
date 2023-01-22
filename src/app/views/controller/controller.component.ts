@@ -3,8 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { Scene } from '../../models/scene.model';
 
 import { ObsApiService } from '../../services/obs-api.service';
+import { OBSRequestTypes } from 'obs-websocket-js';
 import { OBSRequest } from '../../services/constants';
 import { CommonService } from 'src/app/services/common.service';
+import { Source } from 'src/app/models/source.model';
 
 @Component({
   selector: 'obs-controller',
@@ -76,7 +78,20 @@ export class ControllerComponent implements OnInit {
       });
     console.log('setCurrentScene');
   }
-  public showProperties() {
+  public showProperties(scene: any, sceneItem: Source) {
+    console.log()
+    let request: OBSRequestTypes["GetSceneItemTransform"] = {
+      sceneName: scene.sceneName,
+      sceneItemId: sceneItem.sceneItemId,
+    };
+    this.obsApi.sendCommand("GetSceneItemTransform", request).subscribe({
+      next: (data) => {
+        this.commonService.setRightSidebarData({
+          sourceName: sceneItem.sourceName,
+          transformData: data
+        })
+      }
+    })
     this.commonService.setIsPropVisible(true);
   }
 }

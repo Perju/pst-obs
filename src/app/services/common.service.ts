@@ -5,13 +5,22 @@ import { Observable, Subject } from 'rxjs';
   providedIn: 'root',
 })
 export class CommonService {
-  private isPropVisible$: Subject<any> = new Subject<any>();
-  
-  setIsPropVisible(data:any):void{
-    this.isPropVisible$.next(data)
+  private isPropVisible$: Subject<boolean> = new Subject<boolean>();
+  private rightSidebarData$: Subject<unknown> = new Subject<unknown>();
+
+  constructor() {}
+
+  getRightSidebarData(): Observable<unknown> {
+    return this.rightSidebarData$.asObservable();
   }
-  isPropVisible(): Observable<any> {
+  isPropVisible(): Observable<boolean> {
     return this.isPropVisible$.asObservable();
   }
-  constructor() {}
+  setRightSidebarData(data: unknown){
+    this.rightSidebarData$.next(data);
+    this.setIsPropVisible(true);
+  }
+  setIsPropVisible(data: boolean): void {
+    this.isPropVisible$.next(data)
+  }
 }

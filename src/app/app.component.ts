@@ -12,7 +12,7 @@ export class ObsComponent implements OnInit{
 
   ngOnInit(): void {
     this.commonService.isPropVisible().subscribe({
-      next: (data)=>{
+      next: (data: boolean)=>{
         this.isOpened=data;
       }
     })
