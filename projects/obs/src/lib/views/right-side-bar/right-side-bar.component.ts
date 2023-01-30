@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { CommonService } from 'src/app/services/common.service';
+import { ObsUIService } from '../../services/obs-ui.service';
 
 @Component({
   selector: 'obs-right-side-bar',
@@ -9,10 +9,10 @@ import { CommonService } from 'src/app/services/common.service';
 export class ObsRightSideBarComponent implements OnInit {
   public sideElems: any;
 
-  constructor(private commonService: CommonService) {}
+  constructor(private obsUIService: ObsUIService) {}
 
   ngOnInit() {
-    this.commonService.getRightSidebarData().subscribe({
+    this.obsUIService.getRightSidebarData().subscribe({
       next: (data: any) => {
         this.sideElems = {
           name: data.sourceName,

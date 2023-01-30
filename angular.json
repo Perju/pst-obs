@@ -104,6 +104,39 @@
           "builder": "angular-cli-ghpages:deploy"
         }
       }
+    },
+    "obs": {
+      "projectType": "library",
+      "root": "projects/obs",
+      "sourceRoot": "projects/obs/src",
+      "prefix": "pst",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/obs/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/obs/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/obs/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/obs/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
     }
   }
 }

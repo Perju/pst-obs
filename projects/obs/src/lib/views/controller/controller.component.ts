@@ -5,8 +5,8 @@ import { Scene } from '../../models/scene.model';
 import { ObsApiService } from '../../services/obs-api.service';
 import { OBSRequestTypes } from 'obs-websocket-js';
 import { OBSRequest } from '../../services/constants';
-import { Source } from 'src/app/models/source.model';
-import { CommonService } from '../../services/common.service';
+import { Source } from '../../models/source.model';
+import { ObsUIService } from '../../services/obs-ui.service';
 
 @Component({
   selector: 'obs-controller',
@@ -18,7 +18,7 @@ export class ControllerComponent implements OnInit {
   public currentScene: Scene = { sceneName: 'Inicio' };
   constructor(
     private obsApi: ObsApiService,
-    private commonService: CommonService
+    private obsUIService: ObsUIService
   ) {
     this.scenes = [
       { sceneName: 'Inicio', sceneIndex: 0 },
@@ -60,9 +60,11 @@ export class ControllerComponent implements OnInit {
       sceneItemEnabled: $event.checked,
     });
   }
+
   public getIsActive(sceneName: string) {
     return this.currentScene.sceneName === sceneName;
   }
+
   public getActiveColor(sceneName: string) {
     return this.currentScene.sceneName === sceneName ? 'accent' : 'primary';
   }
@@ -78,6 +80,7 @@ export class ControllerComponent implements OnInit {
       });
     console.log('setCurrentScene');
   }
+
   public showProperties(scene: any, sceneItem: Source) {
     console.log()
     let request: OBSRequestTypes["GetSceneItemTransform"] = {
@@ -86,12 +89,12 @@ export class ControllerComponent implements OnInit {
     };
     this.obsApi.sendCommand("GetSceneItemTransform", request).subscribe({
       next: (data) => {
-        this.commonService.setRightSidebarData({
+        this.obsUIService.setRightSidebarData({
           sourceName: sceneItem.sourceName,
           transformData: data
         })
       }
     })
-    this.commonService.setIsPropVisible(true);
+    this.obsUIService.setIsPropVisible(true);
   }
 }

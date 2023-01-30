@@ -35,4 +35,4 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
   ],
   schemas: []
 })
-export class ObsExportModule {}
+export class ObsModule {}
